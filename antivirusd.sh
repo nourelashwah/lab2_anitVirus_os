@@ -7,6 +7,9 @@ if [ "$#" -ne 3 ]; then
     exit 1
 fi
 is_malicious(){
+if [ -f whitelist.txt ] && grep -qxF "$(basename "$1")"  whitelist.txt; then
+    return 1
+fi
 case "$1" in
 *.exe|*.bat|*.vbs|*.scr|*.ps1)return 0;;
 esac

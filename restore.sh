@@ -27,7 +27,8 @@ file="${files[index]}"
 echo "1) Restore   2) Delete   3) Leave"
 read -p "Action: " action
 case "$action" in
-1) mv -t "$dir" "$file"; echo "Restored $(basename "$file") to $dir.";;
+1) mv -t "$dir" "$file"; echo "Restored $(basename "$file") to $dir."
+echo "$(basename "$file")">>whitelist.txt ;;
 2) rm "$file" ; echo "$(basename "$file") permanently deleted." ;;
 3) ;;
 *) echo "invalid choice" ;;
